@@ -1,0 +1,12 @@
+{
+  "name": "ngTodo",
+  "version": "0.0.0",
+  "authors": [
+    "Facundo Crego facundo.crego@gmail.com"
+  ],
+  "description": "Less Html Todo list",
+  "dependencies": {
+    "angular": "~1.3.11",
+    "ng-inheritance": "*"
+  }
+}

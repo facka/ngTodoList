@@ -1,0 +1,3 @@
+<input id="{{::ctrl.instance.id}}" type="{{ctrl.instance.type}}" ng-model="ctrl.instance.model"  size="{{ctrl.instance.size}}"
+        placeholder="{{ctrl.instance.placeHolder}}" ng-keyup="ctrl.instance.onKeyUp" ng-click="ctrl.instance.onClick" class="todo-input"/>
+<label ng-if="ctrl.instance.label" for="{{::ctrl.instance.id}}">{{ctrl.instance.label}}</label>

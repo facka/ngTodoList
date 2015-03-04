@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>removeData demo</title>
+  <style>
+  div {
+    margin: 2px;
+    color: blue;
+  }
+  span {
+    color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<div>value1 before creation: <span data-test="test"></span></div>
+<div>value1 after creation: <span></span></div>
+<div>value1 after removal: <span></span></div>
+<div>value2 after removal: <span></span></div>
+
+<script>
+$( "span:eq(0)" ).text( "" + $( "div" ).data( "test1" ) );
+$( "div" ).data( "test1", "VALUE-1" );
+$( "div" ).data( "test2", "VALUE-2" );
+$( "span:eq(1)" ).text( "" + $( "div").data( "test1" ) );
+//$( "div" ).removeData( "test1" );
+$( "span:eq(2)" ).text( "" + $( "div" ).data( "test1" ) );
+$( "span:eq(3)" ).text( "" + $( "div" ).data( "test2" ) );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<div>
+    <input type="checkbox" ng-model="ctrl.instance.model.done" class="item-check"/>
+    <span ng-if="!ctrl.instance.editable" class="done-{{ctrl.instance.model.done}}" ng-dblclick="ctrl.instance.doubleClick()">{{ctrl.instance.model.text}}</span>
+    <input ng-if="ctrl.instance.editable" class="item-input" type="text" ng-model="ctrl.instance.model.text"
+ng-keyup="ctrl.instance.keyUp($event)"/>
+</div>

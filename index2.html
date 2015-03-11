@@ -1,0 +1,43 @@
+<HEAD>
+<TITLE>AngularJS TODO</TITLE>
+<link rel="stylesheet" href="style.css"/>
+
+
+
+</HEAD>
+<body ng-app="ngApp">
+  <div id="todoapp" ng-controller="TodoCtrl">
+
+    <header>
+        <h1>Todos by Angular.js</h1>
+        <div tag="todoList.input"></div>
+    </header>
+
+    <section id="main" style="display: block;">
+        <div ng-show="todoList.isTodo()">
+          <ui-input instance="todoList.toggleAll"></ui-input>
+        </div>
+        <ui-list instance="todoList"></ui-list>
+    </section>
+
+    <footer style="display: block;">
+        <div class="todo-count">{{todoList.remaining()}} of {{todoList.items.length}} remaining</div>
+          <a id="clear-completed" ng-click="todoList.clear()" ng-show="todoList.hasDone()">
+              Clear <span >{{(todoList.items.length - todoList.remaining())}} {{todoList.itemText()}}</span>.
+          </a>
+    </footer>
+
+  </div>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="angular.js"></script>
+  <script src="bower_components/ng-inheritance/define.js"></script>
+  <script src="components/components.js"></script>
+  <script src="components/uiComponent.js"></script>
+  <script src="components/input/input.js"></script>
+  <script src="components/list/list.js"></script>
+  <script src="components/list/listItem.js"></script>
+  <script src="app.js"></script>
+  <script src="todoList/todoList.js"></script>
+  <script src="todoListItem/todoListItem.js"></script>
+  <script src="controller.js"></script>
+</body>

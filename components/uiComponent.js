@@ -1,7 +1,7 @@
 
 angular.module('components').factory('UiComponent', function() {
   var UiComponent = function(attrs) {
-    this.visible = attrs.visible === 'undefined' ? true : attrs.visible;
+    this.visible = attrs.visible === undefined ? true : attrs.visible;
   };
 
   UiComponent.prototype.clean = function() {

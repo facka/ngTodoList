@@ -11,6 +11,9 @@ app.factory('TodoList', ['Define','TodoListItem','Input','List', function(Define
       onEnter: function(model) {
         _this.addItem({text:model, done:false});
         _this.input.clear();
+      },
+      onClick: function() {
+        console.log('clicked!');
       }
     });
 

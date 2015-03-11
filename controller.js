@@ -1,4 +1,4 @@
-app.controller('TodoCtrl', ['$scope','Input','List','TodoList', function($scope, Input, List, TodoList) {
+app.controller('TodoCtrl', ['$scope','TodoList', function($scope, TodoList) {
 
   $scope.todoList = new TodoList();
 

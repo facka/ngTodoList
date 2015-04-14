@@ -11,7 +11,12 @@ angular.module('components').directive('uiInput', function() {
                   '<label ng-if="ctrl.instance.label" for="{{::ctrl.instance.id}}">{{ctrl.instance.label}}</label>',*/
         controller: 'InputCtrl',
         controllerAs: 'ctrl',
-        bindToController: true
+        bindToController: true,
+        link: function($scope, $element, $attr) {
+          var input = $element.find('input')[0];
+          input.onclick = $scope.ctrl.instance.onClick.bind($scope.ctrl.instance);
+          input.onkeyup = $scope.ctrl.instance.onKeyUp.bind($scope.ctrl.instance);
+        }
     };
 })
 
@@ -32,7 +37,6 @@ angular.module('components').directive('uiInput', function() {
     this.onClick = attrs.onClick;
     this.label = attrs.label;
     this.templateURL = 'components/input/input2.html';
-
   };
 
   Input.super = Define(Input).as('UiComponent');
@@ -42,7 +46,6 @@ angular.module('components').directive('uiInput', function() {
   };
 
   Input.prototype.onKeyUp = function(event) {
-    console.log('keyyp!');
     if(event.keyCode == 13 && this.model){
         this.onEnter(this.model);
     }

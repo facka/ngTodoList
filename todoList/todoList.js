@@ -1,9 +1,10 @@
-app.factory('TodoList', ['Define','TodoListItem','Input','List', function(Define, TodoListItem, Input, List) {
+app.factory('TodoList', ['Define','TodoListItem','Input','List','InputCheckbox', function(Define, TodoListItem, Input, List, InputCheckbox) {
   var TodoList = function() {
     TodoList.super(this, {
       itemFactory: TodoListItem
     });
     var _this = this;
+
     this.input = new Input({
       type : 'text',
       size: 30,
@@ -11,14 +12,10 @@ app.factory('TodoList', ['Define','TodoListItem','Input','List', function(Define
       onEnter: function(model) {
         _this.addItem({text:model, done:false});
         _this.input.clear();
-      },
-      onClick: function() {
-        console.log('clicked!');
       }
     });
 
-    this.toggleAll = new Input({
-      type : 'checkbox',
+    this.toggleAll = new InputCheckbox({
       onClick: function() {
         angular.forEach(_this.items, function(todo) {
           todo.model.done = _this.toggleAll.model;

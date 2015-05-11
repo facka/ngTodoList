@@ -38,6 +38,12 @@ body {
     padding: 2px;
 }
 
+.todo-input-checkbox {
+    font-size: 24px;
+    line-height: 1.4em;
+    padding: 6px;
+}
+
 #main {
     display: none;
 }

@@ -7,7 +7,7 @@ angular.module('components',['ngInheritance'])
 
         var htmls = {
             'components/input/input.html': $http.get('components/input/input.html'),
-            'components/input/input2.html': $http.get('components/input/input2.html')
+            'components/input/inputCheckbox.html': $http.get('components/input/inputCheckbox.html')
         };
         $q.all(htmls).then(function(response) {
             for (var i in response) {
@@ -59,6 +59,9 @@ angular.module('components',['ngInheritance'])
                       htmlReady.then(function(){
                         var html = $templateCache.get($scope.tag.templateURL);
                         var content = $compile(html)($scope);
+                        if ($scope.tag.compile) {
+                          $scope.tag.compile(content);
+                        }
                         $element.append(content);
                       });
 

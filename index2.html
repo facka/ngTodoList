@@ -15,7 +15,7 @@
 
     <section id="main" style="display: block;">
         <div ng-show="todoList.isTodo()">
-          <ui-input instance="todoList.toggleAll"></ui-input>
+          <div tag="todoList.toggleAll"></div>
         </div>
         <ui-list instance="todoList"></ui-list>
     </section>
@@ -34,6 +34,7 @@
   <script src="components/components.js"></script>
   <script src="components/uiComponent.js"></script>
   <script src="components/input/input.js"></script>
+  <script src="components/input/inputCheckbox.js"></script>
   <script src="components/list/list.js"></script>
   <script src="components/list/listItem.js"></script>
   <script src="app.js"></script>

@@ -1,3 +1,3 @@
 <input id="{{::tag.id}}" type="{{tag.type}}" ng-model="tag.model"  size="{{tag.size}}"
-        placeholder="{{tag.placeHolder}}" ng-keyup="tag.onKeyUp($event)" ng-click="tag.onClick($event)" class="todo-input-checkbox"/>
+        placeholder="{{tag.placeHolder}}" ng-keyup="tag.onKeyUp($event)" ng-click="tag.onClick($event, tag.model)" class="todo-input-checkbox"/>
 <label ng-if="tag.label" for="{{::tag.id}}">{{tag.label}}</label>

@@ -1,4 +1,5 @@
 app.factory('TodoList', ['Define','TodoListItem','Input','List','InputCheckbox', function(Define, TodoListItem, Input, List, InputCheckbox) {
+
   var TodoList = function() {
     TodoList.super(this, {
       itemFactory: TodoListItem
@@ -16,10 +17,8 @@ app.factory('TodoList', ['Define','TodoListItem','Input','List','InputCheckbox',
     });
 
     this.toggleAll = new InputCheckbox({
-      onClick: function() {
-        angular.forEach(_this.items, function(todo) {
-          todo.model.done = _this.toggleAll.model;
-        });
+      onClick: function(event, value) {
+        _this.checkAll(value);
       },
       label: 'Mark all as complete'
     });
@@ -38,6 +37,12 @@ app.factory('TodoList', ['Define','TodoListItem','Input','List','InputCheckbox',
       count += item.model.done ? 0 : 1;
     });
     return count;
+  };
+
+  TodoList.prototype.checkAll = function(value) {
+    angular.forEach(this.items, function(item) {
+      item.model.done = value;
+    });
   };
 
   TodoList.prototype.hasDone = function() {

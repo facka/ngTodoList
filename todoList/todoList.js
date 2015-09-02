@@ -9,11 +9,12 @@ app.factory('TodoList', ['Define','TodoListItem','Input','List','InputCheckbox',
     this.input = new Input({
       type : 'text',
       size: 30,
-      placeHolder: 'Insert task...',
-      onEnter: function(model) {
-        _this.addItem({text:model, done:false});
-        _this.input.clear();
-      }
+      placeHolder: 'Insert task...'
+    });
+
+    this.input.onEnter(function (model) {
+      _this.addItem({text:model, done:false});
+      _this.input.clear();
     });
 
     this.toggleAll = new InputCheckbox({

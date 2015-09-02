@@ -9,7 +9,7 @@ angular.module('components').factory('InputCheckbox', function(Define) {
     this.onEnter = attrs.onEnter;
     this.onClick = attrs.onClick;
     this.label = attrs.label;
-    this.templateURL = 'components/input/inputCheckbox.html';
+    this.templateURL = 'components/input/inputCheckbox2.html';
 
   };
 

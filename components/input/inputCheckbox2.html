@@ -1,0 +1,3 @@
+<input id="{{::uiComponent.id}}" type="{{uiComponent.type}}" ng-model="uiComponent.model"  size="{{uiComponent.size}}"
+        placeholder="{{uiComponent.placeHolder}}" ng-keyup="uiComponent.onKeyUp($event)" ng-click="uiComponent.onClick($event, uiComponent.model)" class="todo-input-checkbox"/>
+<label ng-if="uiComponent.label" for="{{::uiComponent.id}}">{{uiComponent.label}}</label>

@@ -13,9 +13,12 @@
         <div tag="todoList.input"></div>
     </header>
 
+
+
     <section id="main" style="display: block;">
         <div ng-show="todoList.isTodo()">
-          <div tag="todoList.toggleAll"></div>
+          <!--<div tag="todoList.toggleAll"></div>-->
+          <ui-component todo_list.toggle_all/>
         </div>
         <ui-list instance="todoList"></ui-list>
     </section>
@@ -29,6 +32,7 @@
 
   </div>
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
   <script src="angular.js"></script>
   <script src="http://facka.github.io/ngInheritance/define.js"></script>
   <script src="components/components.js"></script>
@@ -42,3 +46,27 @@
   <script src="todoListItem/todoListItem.js"></script>
   <script src="controller.js"></script>
 </body>
+
+
+<!--
+
+<ui-component app/>                         app.todoList
+
+//App
+<ui-component todoList/>                    todoList.header
+                                            todoList.input
+                                            todoList.todoMain
+                                            todoList.footer
+
+//todoList
+<ui-component header/>
+<ui-component input/>
+<ui-component todo_main/>                   todoMain.toggleAll
+                                            todoMain.list
+<ui-component footer/>
+
+//Todo main
+<ui-component toggle_all/>
+<ui-component list/>
+
+-->

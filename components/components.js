@@ -7,7 +7,8 @@ angular.module('components',['ngInheritance'])
 
         var htmls = {
             'components/input/input.html': $http.get('components/input/input.html'),
-            'components/input/inputCheckbox.html': $http.get('components/input/inputCheckbox.html')
+            'components/input/inputCheckbox.html': $http.get('components/input/inputCheckbox.html'),
+            'components/input/inputCheckbox2.html': $http.get('components/input/inputCheckbox2.html')
         };
         $q.all(htmls).then(function(response) {
             for (var i in response) {
@@ -70,6 +71,71 @@ angular.module('components',['ngInheritance'])
               };
               $scope.tag._refresh = $scope.refresh;
               $scope.tag._refresh();
+            }
+        };
+    })
+
+    .directive('uiComponent', function($templateCache, $compile, $parse) {
+
+        var camelize = function(value) {
+            var names = value.split('.');
+            var result = names.shift();
+            names.forEach(function(name) {
+              result += '.' + _.camelCase(name);
+            });
+            return result;
+        };
+        var dashify = function(value) {
+            var names = value.split('.');
+            var result = names.shift();
+            names.forEach(function(name) {
+              result += '.' + _.snakeCase(name);
+            });
+            return result;
+        };
+
+        return {
+            restrict: 'E',
+            controller: 'UiComponentCtrl',
+            //replace: true,
+            link: function($scope, $element, $attr) {
+
+              var componentName;
+              for (var attr in $attr.$attr) {
+                componentName = camelize(attr);
+                break;
+              }
+
+              var uiComponent = $parse(componentName)($scope);
+
+              var scope = $scope.$new();
+
+              scope.uiComponent = uiComponent;
+
+              scope.refresh = function() {
+                /*if ($scope.$$childHead) {
+                  $scope.$$childHead.$destroy();
+                }
+                if ($scope.$$childTail) {
+                  $scope.$$childTail.$destroy();
+                }*/
+                $element.empty();
+                if (uiComponent) {
+                   if (uiComponent.visible) {
+                      htmlReady.then(function(){
+                        var html = $templateCache.get(uiComponent.templateURL);
+                        var content = $compile(html)(scope);
+                        if (uiComponent.compile) {
+                          uiComponent.compile(content);
+                        }
+                        $element.append(content);
+                      });
+
+                   }
+                }
+              };
+              uiComponent._refresh = scope.refresh;
+              uiComponent._refresh();
             }
         };
     })
